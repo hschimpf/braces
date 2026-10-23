@@ -186,6 +186,18 @@ console.log(braces.expand('a{b}c'));
 console.log(braces('a/{b,c}/d', { maxLength: 3 })); //=> throws an error
 ```
 
+### options.maxDepth
+
+**Type**: `Number`
+
+**Default**: `256`
+
+**Description**: Limit the nesting depth of brace patterns. Useful when the input string is generated or your application allows users to pass a string, et cetera.
+
+```js
+console.log(braces('a/{b,{c,d}}/e', { maxDepth: 1 })); //=> throws an error
+```
+
 ### options.expand
 
 **Type**: `Boolean`

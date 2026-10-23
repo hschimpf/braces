@@ -10,6 +10,14 @@ describe('braces.parse()', () => {
       const MAX_LENGTH = 1024 * 64;
       assert.throws(() => parse('.'.repeat(MAX_LENGTH + 2)));
     });
+
+    it('should throw an error when brace nesting exceeds max depth', () => {
+      assert.throws(() => parse('{'.repeat(300)));
+    });
+
+    it('should throw an error when brace nesting exceeds a custom maxDepth', () => {
+      assert.throws(() => parse('a{b{c}d}e', { maxDepth: 1 }));
+    });
   });
 
   describe('valid', () => {
